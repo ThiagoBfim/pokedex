@@ -21,9 +21,11 @@ class PokemonListItem extends StatelessWidget {
         aspectRatio: 16 / 11,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Stack( //This widget provides the ability to place one widget on top of another.
+          child: Stack(
+            //Stack provides the ability to place one widget on top of another.
             children: [
-              Hero(tag: id, child: _buildParallaxBackground(context)), // Hero is a Widget that provide a nice effect using this tag
+              Hero(tag: id, child: _buildParallaxBackground(context)),
+              // Hero is a Widget that provide a nice effect using this tag
               _buildGradient(),
               _buildTitleAndSubtitle(),
             ],
@@ -34,14 +36,16 @@ class PokemonListItem extends StatelessWidget {
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
-    return Flow( // This widget sizes and positions children efficiently, according to the logic in a FlowDelegate.
+    return Flow(
+      // Flow is a widget that sizes and positions children efficiently, according to the logic in a FlowDelegate.
       delegate: ParallaxFlowDelegate(
         scrollable: Scrollable.of(context)!,
         listItemContext: context,
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        ColorFiltered( // This widget is used here to include opacity to the image.
+        ColorFiltered(
+          // ColorFiltered is used here to include opacity to the image.
           colorFilter: ColorFilter.mode(
               Colors.black.withOpacity(0.25), BlendMode.dstATop),
           child: Image.network(

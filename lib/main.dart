@@ -36,11 +36,14 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView( // This means that if we have more elements than the height of the phone, we will have a scroll
-      child: Column( //All the elements will be in the vertical orientation,
+    return SingleChildScrollView(
+      // SingleChildScrollView help when we have more elements than the height of the phone, we will have a scroll
+      child: Column(
+        //Column will allows a list of elements that will be in the vertical orientation
         children: [
           for (final pokemon in pokemons)
-            GestureDetector( //This Widget help us to configure the onTap action
+            GestureDetector(
+              //GestureDetector help us to configure the onTap action
               onTap: () => _sendToPokemonDetails(context, pokemon),
               child: PokemonListItem(
                 imageUrl: pokemon.imageUrl,
@@ -56,7 +59,6 @@ class HomeWidget extends StatelessWidget {
 
   Future<void> _sendToPokemonDetails(BuildContext context, Pokemon pokemon) {
     return Navigator.of(context).push(MaterialPageRoute<void>(
-                builder: (BuildContext _) =>
-                    PokemonDetails(pokemon: pokemon)));
+        builder: (BuildContext _) => PokemonDetails(pokemon: pokemon)));
   }
 }
