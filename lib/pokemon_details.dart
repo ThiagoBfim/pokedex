@@ -7,7 +7,6 @@ class PokemonDetails extends StatelessWidget {
 
   final Pokemon pokemon;
 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(

@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 class PokemonListItem extends StatelessWidget {
-  PokemonListItem({Key? key,
-  required this.imageUrl,
-  required this.name,
-  required this.id,
+  PokemonListItem({
+    Key? key,
+    required this.imageUrl,
+    required this.name,
+    required this.id,
   }) : super(key: key);
 
   final String imageUrl;
@@ -21,9 +21,9 @@ class PokemonListItem extends StatelessWidget {
         aspectRatio: 16 / 11,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Stack(
+          child: Stack( //This widget provides the ability to place one widget on top of another.
             children: [
-              Hero(tag: id, child: _buildParallaxBackground(context)),
+              Hero(tag: id, child: _buildParallaxBackground(context)), // Hero is a Widget that provide a nice effect using this tag
               _buildGradient(),
               _buildTitleAndSubtitle(),
             ],
@@ -34,15 +34,16 @@ class PokemonListItem extends StatelessWidget {
   }
 
   Widget _buildParallaxBackground(BuildContext context) {
-    return Flow(
+    return Flow( // This widget sizes and positions children efficiently, according to the logic in a FlowDelegate.
       delegate: ParallaxFlowDelegate(
         scrollable: Scrollable.of(context)!,
         listItemContext: context,
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        ColorFiltered(
-          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.25), BlendMode.dstATop),
+        ColorFiltered( // This widget is used here to include opacity to the image.
+          colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.25), BlendMode.dstATop),
           child: Image.network(
             imageUrl,
             key: Key(imageUrl),
@@ -109,7 +110,6 @@ class ParallaxFlowDelegate extends FlowDelegate {
     required this.backgroundImageKey,
   }) : super(repaint: scrollable.position);
 
-
   final ScrollableState scrollable;
   final BuildContext listItemContext;
   final GlobalKey backgroundImageKey;
@@ -134,7 +134,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
     // scrollable area.
     final viewportDimension = scrollable.position.viewportDimension;
     final scrollFraction =
-    (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
+        (listItemOffset.dy / viewportDimension).clamp(0.0, 1.0);
 
     // Calculate the vertical alignment of the background
     // based on the scroll percent.
@@ -147,18 +147,18 @@ class ParallaxFlowDelegate extends FlowDelegate {
             .size;
     final listItemSize = context.size;
     final childRect =
-    verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
+        verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
 
     // Paint the background.
     context.paintChild(
       0,
       transform:
-      Transform.translate(offset: Offset(0.0, childRect.top)).transform,
+          Transform.translate(offset: Offset(0.0, childRect.top)).transform,
     );
     context.paintChild(
       1,
-      transform:
-      Transform.translate(offset: Offset(0.0, childRect.top/1.4)).transform,
+      transform: Transform.translate(offset: Offset(0.0, childRect.top / 1.4))
+          .transform,
     );
   }
 
