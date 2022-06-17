@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/pokemon.dart';
-import 'package:pokedex/pokemon_details.dart';
-import 'package:pokedex/pokemon_list_item.dart';
+import 'package:pokedex/models/pokemon_list.dart';
+import 'package:pokedex/screens/home.dart';
+import 'package:provider/provider.dart';
 
 const Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
 void main() {
-  runApp(const MainWidget());
+  runApp(ChangeNotifierProvider(
+      create: (context) => PokemonList(), child: const MainWidget()));
 }
 
 class MainWidget extends StatelessWidget {
@@ -19,46 +20,7 @@ class MainWidget extends StatelessWidget {
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       //This is our theme
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        //Scaffold is very common Widget used to implement the basic visual layout
-        body: Center(
-          child: HomeWidget(),
-        ),
-      ),
+      home: const HomeWidget(),
     );
-  }
-}
-
-class HomeWidget extends StatelessWidget {
-  const HomeWidget({
-    key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      // SingleChildScrollView help when we have more elements than the height of the phone, we will have a scroll
-      child: Column(
-        //Column will allows a list of elements that will be in the vertical orientation
-        children: [
-          for (final pokemon in pokemons)
-            GestureDetector(
-              //GestureDetector help us to configure the onTap action
-              onTap: () => _sendToPokemonDetails(context, pokemon),
-              child: PokemonListItem(
-                imageUrl: pokemon.imageUrl,
-                name: pokemon.name,
-                id: pokemon.id,
-              ),
-            ),
-          const SizedBox(height: 100),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _sendToPokemonDetails(BuildContext context, Pokemon pokemon) {
-    return Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (BuildContext _) => PokemonDetails(pokemon: pokemon)));
   }
 }
