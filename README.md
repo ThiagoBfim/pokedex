@@ -1,16 +1,51 @@
-# pokedex
+# Pokedex
 
 Pokedex app
 
+![](git_assets/pokedex.gif)
+
+## About this project
+
+This is an elementary example with Flutter, used in a presentation to explain Flutter.
+
+This project consists in:
+
+* Three screens (Home, Detail, New Pokemon Modal)
+* List of elements
+* Hero and Parallax effect with Flow
+* Navigator
+* Stack
+* Column
+* Text
+* GestureDetector
+* SingleChildScrollView
+* Http Request
+* Json parse
+* Modal Bottom Sheet
+* Provider
+* Form
+* ElevatedButton
+
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this project, you'll need Flutter and a mobile device.
 
-A few resources to get you started if this is your first Flutter project:
+``
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+$ flutter devices
+$ flutter run
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+``
+
+For more information access the documentation: https://docs.flutter.dev/get-started/test-drive?tab=terminal
+
+## Technologies
+
+* Flutter 3.0.1
+* Dart 2.17.1
+
+## References
+
+* [Parallax effect](https://docs.flutter.dev/cookbook/effects/parallax-scrolling)
+* [Fetch data](https://docs.flutter.dev/cookbook/networking/fetch-data)
+* [Proviedr](https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple)
