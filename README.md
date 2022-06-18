@@ -31,12 +31,10 @@ This project consists in:
 
 To run this project, you'll need Flutter and a mobile device.
 
-``
-
+```
 $ flutter devices
 $ flutter run
-
-``
+```
 
 For more information access the documentation: https://docs.flutter.dev/get-started/test-drive?tab=terminal
 
