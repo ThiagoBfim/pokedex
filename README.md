@@ -2,7 +2,8 @@
 
 Pokedex app
 
-![](git_assets/pokedex.gif)
+<img src="git_assets/pokedex.gif" height="350"/>
+
 
 ## About this project
 
